@@ -259,6 +259,9 @@ namespace EyeTrackerSample
 
         private static StreamWriter GetStreamWriter(string fileName)
         {
+            if (!Directory.Exists(DATA_DIRECTORY))
+                Directory.CreateDirectory(DATA_DIRECTORY);
+
             return File.CreateText($@"{DATA_DIRECTORY}\{GetFileNamePrefix()}_{fileName}.csv");
         }
 
