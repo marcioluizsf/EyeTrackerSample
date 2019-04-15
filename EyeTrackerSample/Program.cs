@@ -143,8 +143,8 @@ namespace EyeTrackerSample
                 _headPoseStreamWriter.Write($"{timestamp};{e.Data.EngineTimestamp};");
 
                 _headPoseStreamWriter.Write(e.Data.HasHeadPosition ?
-                    GetVectorAxysCommaSeparated(e.Data.HeadPosition) :
-                    GetVectorAxysCommaSeparated(null));
+                    GetVectorComponentsSemicolonSeparated(e.Data.HeadPosition) :
+                    GetVectorComponentsSemicolonSeparated(null));
 
                 _headPoseStreamWriter.Write(";");
 
@@ -217,31 +217,31 @@ namespace EyeTrackerSample
 
                 _eyePositionStreamWriter.Write($"{timestamp};{e.Data.EngineTimestamp};");
 
-                _eyePositionStreamWriter.Write(GetVectorAxysCommaSeparated(e.Data.LeftEyeNormalized));
+                _eyePositionStreamWriter.Write(GetVectorComponentsSemicolonSeparated(e.Data.LeftEyeNormalized));
 
                 _eyePositionStreamWriter.Write(";");
 
                 _eyePositionStreamWriter.Write(
                     e.Data.HasLeftEyePosition ?
-                    GetVectorAxysCommaSeparated(e.Data.LeftEye) :
-                    GetVectorAxysCommaSeparated(null));
+                    GetVectorComponentsSemicolonSeparated(e.Data.LeftEye) :
+                    GetVectorComponentsSemicolonSeparated(null));
 
                 _eyePositionStreamWriter.Write(";");
 
-                _eyePositionStreamWriter.Write(GetVectorAxysCommaSeparated(e.Data.RightEyeNormalized));
+                _eyePositionStreamWriter.Write(GetVectorComponentsSemicolonSeparated(e.Data.RightEyeNormalized));
 
                 _eyePositionStreamWriter.Write(";");
 
                 _eyePositionStreamWriter.Write(
                     e.Data.HasRightEyePosition ?
-                    GetVectorAxysCommaSeparated(e.Data.RightEye) :
-                    GetVectorAxysCommaSeparated(null));
+                    GetVectorComponentsSemicolonSeparated(e.Data.RightEye) :
+                    GetVectorComponentsSemicolonSeparated(null));
 
                 _eyePositionStreamWriter.Write(Environment.NewLine);
             };
         }
 
-        private static string GetVectorAxysCommaSeparated(Vector3? vector)
+        private static string GetVectorComponentsSemicolonSeparated(Vector3? vector)
         {
             if (!vector.HasValue)
                 return ";;";
